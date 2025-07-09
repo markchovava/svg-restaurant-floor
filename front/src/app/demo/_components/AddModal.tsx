@@ -45,6 +45,7 @@ export default function AddModal({ isModal, setIsModal }: AddModalProps) {
         setTimeout(() => {
             toast.success("Booking sent successfully, check your email", reactToastifyDark);
             setIsSubmit(false)
+            setIsModal(false)
         }, 3000);
     }
   return (
@@ -156,7 +157,7 @@ export default function AddModal({ isModal, setIsModal }: AddModalProps) {
                 </div>
             </motion.section>
             }
-        </AnimatePresence>
+    </AnimatePresence>
     </>
   )
 }

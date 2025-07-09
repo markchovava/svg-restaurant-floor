@@ -3,6 +3,9 @@ import React, { useState } from 'react'
 import { TableData } from '../_data/TableData'
 import { Check, X } from 'lucide-react';
 import AddModal from './AddModal';
+import { FaWhatsapp } from "react-icons/fa";
+import Link from 'next/link';
+import { FaFacebook } from "react-icons/fa6";
 
 
 interface XnY {
@@ -203,7 +206,11 @@ export default function DemoSVG() {
                     <div key={key} className='p-4 border-b border-gray-300'>
                         <div className='flex justify-between items-center mb-2'>
                             <p className='font-bold text-xl'>{i.name}</p>
-                            <p className='text-green-700 font-bold text-xl'>Available</p>
+                            <p className={`
+                            ${i.status == "Available" && 'text-green-700'} 
+                            ${i.status == "Occupied" && 'text-red-600'} 
+                            ${i.status == "Partial" && 'text-amber-600'} 
+                            font-bold text-xl`}>{i.status}</p>
                         </div>
                         <p className='text-primary text-sm'>Booking Times:</p>
                         <div className='flex justify-between items-center mb-2'>
@@ -225,6 +232,12 @@ export default function DemoSVG() {
 
         </section>
 
+    </div>
+
+
+    <div className='fixed z-100 bottom-[2rem] p-2 left-[2rem] bg-white rounded-full drop-shadow-lg flex items-center justify-end gap-2'>
+        <Link href="#"><FaWhatsapp className='hover:scale-110 ease-in-out transition-all duration-200 text-[2.2rem] text-green-600' /></Link>
+        <Link href="#"><FaFacebook className='hover:scale-110 ease-in-out transition-all duration-200 text-[2.2rem] text-blue-600' /></Link>
     </div>
 
 
