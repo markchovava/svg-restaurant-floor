@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { AnimatePresence, motion, Variants } from 'framer-motion';
 import { IoClose } from 'react-icons/io5';
+import { reactToastifyDark } from '@/app/_utils/reactToastify';
+import { toast } from 'react-toastify';
 
 interface AddModalProps {
     isModal: boolean;
@@ -37,6 +39,14 @@ export default function AddModal({ isModal, setIsModal }: AddModalProps) {
     const handleInput = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         setData({...data, [e.target.name]: e.target.value});
     }
+
+    async function postData() {
+        
+        setTimeout(() => {
+            toast.success("Booking sent successfully, check your email", reactToastifyDark);
+            setIsSubmit(false)
+        }, 3000);
+    }
   return (
     <>
     <AnimatePresence>
@@ -55,7 +65,7 @@ export default function AddModal({ isModal, setIsModal }: AddModalProps) {
                         <IoClose className='text-2xl' />
                     </button>
                     </div>
-                    <form action="" onSubmit={() => setIsSubmit(true)}>
+                    <form action={postData} onSubmit={() => setIsSubmit(true)}>
                        <h2 className='text-[2.5rem] font-light mb-6 text-center border-b border-gray-300'>
                         Book Table
                         </h2>
